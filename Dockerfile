@@ -51,6 +51,9 @@ RUN \
 	eudev-libs \
 	libressl \
 	openssh \
+	sshpass \
+	iputils \
+	ffmpeg \
 	python3-dev && \
  echo "**** link libftdi libs ****" && \
  ln -s /usr/lib/libftdi1.so /usr/lib/libftdi.so && \

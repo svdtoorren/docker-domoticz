@@ -28,9 +28,7 @@ This image provides various versions that are available via tags. `latest` tag u
 
 | Tag | Description |
 | :----: | --- |
-| latest | Current latest head from master at https://github.com/domoticz/domoticz. |
 | stable | Latest stable version. |
-| stable-4.9700 | Old stable version. Will not be updated anymore! |
 
 ## Parameters
 

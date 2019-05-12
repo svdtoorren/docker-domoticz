@@ -1,3 +1,3 @@
-FROM linuxserver/domoticz:stable
+FROM linuxserver/domoticz:latest
 
 RUN apk add --no-cache sshpass iputils ffmpeg

@@ -1,36 +1,53 @@
 # freekers/docker-domoticz
 
-This is a fork of linuxserver/docker-domoticz with personal customizations: ffmpeg, sshpass and iputils have been added as alpine packages to support RTSP streams, “keyboard-interactive” password authentication for use with the iDetect presence detection plugin and iputils for custom watchdog scripts.
+This is a fork of demydiuk/domoticz with personal customizations: ffmpeg, sshpass and iputils-ping have been added, as well as the python package 'paramiko', to support RTSP streams, “keyboard-interactive” password authentication for use with the iDetect presence detection plugin and iputils-ping for custom watchdog scripts. 
 
-The images are automatically updated if new code is committed to linuxserver's Github repository. Additionally, the images are rebuild whenever the base image is updated on Docker Hub (i.e. linuxserver:docker-domoticz).
+As of stable-2020.1.11838, the images are based on Ubuntu 18.04. Previous versions were based on Alpine Linux.
+
+The images are rebuild whenever the base image is updated on Docker Hub (i.e. demydiuk/domoticz).
 
 ## Usage
 
 ```
-docker create \
-  --name=domoticz \
-  --net=bridge \
-  -v <path to data>:/config \
-  -e PGID=<gid> -e PUID=<uid>  \
-  -e TZ=<timezone> \
-  -p 1443:1443 \
-  -p 6144:6144 \
-  -p 8080:8080 \
-  --device=<path to device> \
-  freekers/docker-domoticz
+docker run -d \
+    -p 8080:8080 \
+    -v <path for config files>:/config \
+    -v /etc/localtime:/etc/localtime:ro \
+    --device=<device_id> \
+    --name=domoticz \ 
+    freekers/docker-domoticz
 ```
 
-You can choose between using tags, latest (default, and no tag required), or a specific stable version of domoticz.
+## Docker-Compose
+
+```
+version: '3.7'
+services:
+  domoticz:
+    image: freekers/docker-domoticz
+    container_name: domoticz
+    restart: always
+    volumes:
+     - /opt/domoticz/config:/config
+     - /etc/localtime:/etc/localtime:ro
+    ports:
+     - 8080:8080
+    devices:
+     - "/dev/ttyUSB0:/dev/ttyUSB0"    
+```
 
 #### Tags
 
-This image provides various versions that are available via tags. `latest` tag usually provides the latest stable version. Others are considered under development and caution must be exercised when using them.
+This image provides various versions that are available via tags. The `latest` tag provides the latest beta version, which is considered under development and thus caution must be exercised when using it. Hence it is advised to use the `stable` tag, which provides the latest stable version. All other tags below are to pinpoint a specific stable release.
 
 | Tag | Description |
 | :----: | --- |
-| latest | Current latest head from master at https://github.com/domoticz/domoticz. |
+| latest | Latest beta version. |
 | stable | Latest stable version. |
+| stable-2020.1.11838 | Current stable version |
+| stable-4.10717 | Old stable version. Will not be updated anymore! |
 | stable-4.9700 | Old stable version. Will not be updated anymore! |
+
 
 ## Parameters
 
@@ -40,16 +57,9 @@ So -p 8080:80 would expose port 80 from inside the container to be accessible fr
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
 
 
-* `-p 1443` - the port(s)
-* `-p 6144` - the port(s)
 * `-p 8080` - the port(s)
 * `-v /config` - location for the config files
-* `-e PGID` for GroupID - see below for explanation
-* `-e PUID` for UserID - see below for explanation
 * `--device` - for passing through USB devices
-* `-e TZ` - for timezone information *eg Europe/London, etc*
-
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it domoticz /bin/bash`.
 
 ### Passing Through USB Devices
 
@@ -63,17 +73,6 @@ usb 1-1.2: FTDI USB Serial Device converter now attached to ttyUSB0
 ```
 
 As you can see above, the device node created is ttyUSB0. It does not say where, but it's almost always in /dev/. The correct tag for passing through this USB device is '--device=/dev/ttyUSB0'
-
-### User / Group Identifiers
-
-Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
-
-In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
-
-```
-  $ id <dockeruser>
-    uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
-```
 
 ## Setting up the application
 

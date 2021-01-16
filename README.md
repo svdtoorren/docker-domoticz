@@ -1,10 +1,8 @@
 # freekers/docker-domoticz
 
-This is a fork of demydiuk/domoticz with personal customizations: ffmpeg, sshpass and iputils-ping have been added, as well as the python package 'paramiko', to support RTSP streams, “keyboard-interactive” password authentication for use with the iDetect presence detection plugin and iputils-ping for custom watchdog scripts. 
+This is a fork of linuxserver/docker-domoticz with personal customizations: ffmpeg, sshpass and iputils-ping have been added, as well as the python package 'paramiko', to support RTSP streams, “keyboard-interactive” password authentication for use with the iDetect presence detection plugin and iputils-ping for custom watchdog scripts. 
 
-As of stable-2020.1.11838, the images are based on Ubuntu 18.04. Previous versions were based on Alpine Linux.
-
-The images are rebuild whenever the base image is updated on Docker Hub (i.e. demydiuk/domoticz).
+The images are rebuild whenever the base image is updated on Docker Hub (i.e. linuxserver/docker-domoticz).
 
 ## Usage
 
@@ -42,12 +40,8 @@ This image provides various versions that are available via tags. The `latest` t
 
 | Tag | Description |
 | :----: | --- |
-| latest | Latest beta version. |
-| stable | Latest stable version. |
-| stable-2020.1.11838 | Current stable version |
-| stable-4.10717 | Old stable version. Will not be updated anymore! |
-| stable-4.9700 | Old stable version. Will not be updated anymore! |
-
+| latest | Latest stable version. |
+| stable-2020.2 | Pinned stable version |
 
 ## Parameters
 

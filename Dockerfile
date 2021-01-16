@@ -1,5 +1,4 @@
-# New base image as LS.IO was not updated yet
-FROM demydiuk/domoticz:latest
+FROM linuxserver/domoticz:latest
 
 RUN apt-get update && \
     apt-get -y upgrade && \

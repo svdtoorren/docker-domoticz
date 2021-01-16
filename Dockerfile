@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/domoticz:latest
+FROM linuxserver/domoticz:latest
 
 RUN apt-get update && \
     apt-get -y upgrade && \

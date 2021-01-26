@@ -8,3 +8,6 @@ RUN apt-get update && \
 
 # For Domoticz_iDetect v2
 RUN pip3 install paramiko
+
+# Install Zigbee2MQTT
+RUN git clone https://github.com/stas-demydiuk/domoticz-zigbee2mqtt-plugin.git /opt/domoticz/plugins/zigbee2mqtt

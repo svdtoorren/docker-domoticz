@@ -10,4 +10,5 @@ RUN apt-get update && \
 RUN pip3 install paramiko
 
 # Install Zigbee2MQTT
-RUN git clone https://github.com/stas-demydiuk/domoticz-zigbee2mqtt-plugin.git /opt/domoticz/plugins/zigbee2mqtt
+WORKDIR /opt/domoticz/plugins/
+RUN git clone https://github.com/stas-demydiuk/domoticz-zigbee2mqtt-plugin.git

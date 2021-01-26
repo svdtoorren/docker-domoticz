@@ -1,17 +1,16 @@
-# freekers/docker-domoticz
+# stoorren/docker-domoticz
 
-This is a fork of linuxserver/docker-domoticz with personal customizations: ffmpeg, sshpass and iputils-ping have been added, as well as the python package 'paramiko', to support RTSP streams, “keyboard-interactive” password authentication for use with the iDetect presence detection plugin and iputils-ping for custom watchdog scripts. 
+This is a fork of freekers/docker-domoticz with personal customizations: switch base image back to demydiuk/domoticz:latest and include zigbee2mqtt plugin.
 
 The images are rebuild whenever the base image is updated on Docker Hub (i.e. linuxserver/docker-domoticz).
 
 ## Tags
 
-This image provides various versions that are available via tags. The `latest` tag provides the latest beta version, which is considered under development and thus caution must be exercised when using it. Hence it is advised to use the `stable` tag, which provides the latest stable version. All other tags below are to pinpoint a specific stable release.
+The `latest` tag provides the latest beta version, which is considered under development and thus caution must be exercised when using it.
 
 | Tag | Description |
 | :----: | --- |
 | latest | Latest stable version. |
-| stable-2020.2 | Pinned stable version |
 
 ## Usage
 

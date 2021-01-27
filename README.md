@@ -2,7 +2,7 @@
 
 This is a fork of freekers/docker-domoticz with personal customizations: switch base image back to demydiuk/domoticz:latest and include zigbee2mqtt plugin.
 
-The images are rebuild whenever the base image is updated on Docker Hub (i.e. linuxserver/docker-domoticz).
+The images are rebuild whenever the base image is updated on Docker Hub (i.e. demydiuk/domoticz).
 
 ## Tags
 
@@ -10,7 +10,7 @@ The `latest` tag provides the latest beta version, which is considered under dev
 
 | Tag | Description |
 | :----: | --- |
-| latest | Latest stable version. |
+| latest | Latest beta version. |
 
 ## Usage
 
@@ -27,7 +27,7 @@ docker run -d \
   -v <path to data>:/config \
   --device <path to device>:<path to device> \
   --restart unless-stopped \
-  freekers/docker-domoticz
+  stoorren/docker-domoticz
 ```
 
 ## Docker-Compose
@@ -37,7 +37,7 @@ docker run -d \
 version: "2.1"
 services:
   domoticz:
-    image: freekers/docker-domoticz
+    image: stoorren/docker-domoticz
     container_name: domoticz
     environment:
       - PUID=1000

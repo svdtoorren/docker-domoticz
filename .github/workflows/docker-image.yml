@@ -13,19 +13,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v2
+
     - name: Checkout zigbee2mqtt repo
       uses: actions/checkout@v2
       with:
         repository: stas-demydiuk/domoticz-zigbee2mqtt-plugin
-        path: zigbee2mqtt        
-        
+        path: zigbee2mqtt
+
     - name: Checkout xiaomi-roborock repo
       uses: actions/checkout@v2
       with:
         repository: mrin/domoticz-mirobot-plugin
-        path: xiaomi-mirobot  
-    
-    - uses: actions/checkout@v2
+        path: xiaomi-mirobot
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-      
+

@@ -26,7 +26,7 @@ jobs:
       name: Checkout xiaomi-roborock repo
       uses: actions/checkout@v2
       with:
-        repository: mrin/domoticz-mirobot-plugin
+        repository: svdtoorren/domoticz-mirobot-plugin
         path: xiaomi-mirobot
     -
       name: Set up QEMU

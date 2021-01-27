@@ -18,5 +18,5 @@ RUN pip3 install -U setuptools && \
     pip3 install -U virtualenv
 
 COPY ./xiaomi-mirobot /opt/domoticz/plugins/xiaomi-mirobot
-WORKDIR ./opt/domoticz/plugins/xiaomi-mirobot
+WORKDIR /opt/domoticz/plugins/xiaomi-mirobot
 RUN pip3 install msgpack-python

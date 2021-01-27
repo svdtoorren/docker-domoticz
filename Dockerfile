@@ -11,12 +11,12 @@ RUN apt-get update && \
 RUN pip3 install paramiko
 
 # Install Zigbee2MQTT
-COPY ./zigbee2mqtt /opt/domoticz/plugins/zigbee2mqtt
+COPY $GITHUB_WORKSPACE/zigbee2mqtt /opt/domoticz/plugins/zigbee2mqtt
 
 # Install Roborock
 RUN pip3 install -U setuptools && \
     pip3 install -U virtualenv
 
-COPY ./xiaomi-mirobot /opt/domoticz/plugins/xiaomi-mirobot
+COPY $GITHUB_WORKSPACE/xiaomi-mirobot /opt/domoticz/plugins/xiaomi-mirobot
 WORKDIR /opt/domoticz/plugins/xiaomi-mirobot
 RUN pip3 install msgpack-python

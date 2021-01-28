@@ -1,5 +1,7 @@
 # stoorren/docker-domoticz
 
+![Docker Image CI](https://github.com/svdtoorren/docker-domoticz/workflows/Docker%20Image%20CI/badge.svg)
+
 This is a fork of freekers/docker-domoticz with personal customizations: switch base image back to demydiuk/domoticz:latest and include zigbee2mqtt plugin.
 
 The images are rebuild whenever the base image is updated on Docker Hub (i.e. demydiuk/domoticz).
